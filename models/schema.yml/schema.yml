@@ -5,17 +5,22 @@ sources:
     schema: gz_raw_data
     tables:
       - name: sales
+        freshness: 
+          warn_after:
+            count: 90
+            period: day
+        loaded_at_field: "CAST(date_date as TIMESTAMP)"
         identifier: raw_gz_sales
         description: sales of greenweez / we have one row per products_id found in each orders_id
         tests:
           - unique:
-              column_name: "(orders_id || '-' || products_id)" 
+              column_name: "(orders_id || '-' || pdt_id)" 
         columns:
           - name: date_date
             description: the date of purchase
           - name: orders_id
             description: nn
-          - name: products_id
+          - name: pdt_id
             description: nn
           - name: revenue
             description: nn
