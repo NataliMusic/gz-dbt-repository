@@ -5,7 +5,7 @@ sources:
     schema: gz_raw_data
     tables:
       - name: sales
-        freshness: 
+        freshness:
           warn_after:
             count: 90
             period: day
@@ -14,7 +14,7 @@ sources:
         description: sales of greenweez / we have one row per products_id found in each orders_id
         tests:
           - unique:
-              column_name: "(orders_id || '-' || pdt_id)" 
+              column_name: "(orders_id || '-' || pdt_id)"
         columns:
           - name: date_date
             description: the date of purchase
@@ -36,7 +36,7 @@ sources:
               - unique
               - not_null
           - name: purchase_price
-            description: nn                
+            description: nn
       - name: ship
         identifier: raw_gz_ship
         description: shipping of products
